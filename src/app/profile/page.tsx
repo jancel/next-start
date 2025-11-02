@@ -1,25 +1,20 @@
-import { Card, CardBody, User } from "@heroui/react";
 import { getServerSession } from "next-auth";
 
 import options from "@/config/auth";
 import requireAuth from "@/utils/require-auth";
+import ProfileCard from "@/components/ui/profile-card";
+
+export const dynamic = "force-dynamic";
 
 export default async function Profile() {
   await requireAuth();
   const session = (await getServerSession(options))!;
 
   return (
-    <Card className="mx-auto mt-4 max-w-md">
-      <CardBody>
-        <User
-          name={session.user?.name}
-          description={session.user?.email}
-          avatarProps={{
-            showFallback: !session.user?.image,
-            src: session.user?.image || "",
-          }}
-        />
-      </CardBody>
-    </Card>
+    <ProfileCard
+      name={session.user?.name}
+      email={session.user?.email}
+      image={session.user?.image}
+    />
   );
 }
