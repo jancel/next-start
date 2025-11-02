@@ -11,7 +11,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { IconPackage } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 
